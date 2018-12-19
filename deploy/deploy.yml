@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nettest
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+     app: nettest
+  template:
+    metadata:
+      labels:
+        app: nettest
+    spec:
+      containers:
+      - name: nettest
+        image: sharas/nettest:0.1
+        ports:
+        - name: web-server
+          containerPort: 80
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nettest
+  namespace: default
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: nettest
+  sessionAffinity: None
+  type: ClusterIP
