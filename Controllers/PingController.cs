@@ -15,7 +15,7 @@ namespace nettest.Controllers
     [Route("[controller]")]
     public class PingController : Controller
     {
-        class EnvVars { public string COMMIT_MSG = ""; public string COMMIT_HASH = ""; }
+        class EnvVars { public string COMMIT_INFO = ""; public string COMMIT_HASH = ""; }
 
         public PingController(IHostingEnvironment env, IConfiguration config)
         {
@@ -46,7 +46,7 @@ namespace nettest.Controllers
                 HostIP = myIP,
                 Host_name = Environment.MachineName,
                 CommitHash = envVars.COMMIT_HASH,
-                CommitMsg = envVars.COMMIT_MSG
+                CommitInfo = envVars.COMMIT_INFO
             });
         }
     }

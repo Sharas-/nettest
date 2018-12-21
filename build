@@ -1,0 +1,7 @@
+#! /bin/bash
+set -e #stop at first error
+
+COMMIT_HASH=$(git rev-parse --verify HEAD --short)
+COMMIT_INFO=$(git show HEAD --no-patch --pretty=format:'author: [%an, %ae] msg: %s')
+
+docker build -f deploy/Dockerfile -t sharas/nettest:${COMMIT_HASH} --build-arg COMMIT_INFO="${COMMIT_INFO}" --build-arg COMMIT_HASH="${COMMIT_HASH}" .

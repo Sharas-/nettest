@@ -14,4 +14,8 @@ RUN dotnet publish --configuration Release --output out --no-restore
 FROM run-base AS release
 COPY --from=compile /src/out /srv/
 WORKDIR /srv
+ARG COMMIT_HASH
+ENV COMMIT_HASH=${COMMIT_HASH:-undefined}
+ARG COMMIT_INFO
+ENV COMMIT_INFO=${COMMIT_INFO:-undefined}
 ENTRYPOINT ["dotnet", "nettest.dll"] 
