@@ -21,7 +21,7 @@ namespace nettest
 		internal IConfiguration Configuration { get; }
 		
 		public void Configure(IHostingEnvironment env, IApplicationBuilder app)
-		{
+	{
 			app.UseMvc();
 		}
 

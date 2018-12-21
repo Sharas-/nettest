@@ -14,6 +14,7 @@ namespace nettest
                     configBuilder.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                         .AddJsonFile(path: $"appsettings.{cntxt.HostingEnvironment.EnvironmentName}.json",
                             optional: true, reloadOnChange: true)
+                        .AddEnvironmentVariables()
                         .AddCommandLine(args);
                 })
                 .UseStartup<Startup>()
