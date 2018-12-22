@@ -15,7 +15,11 @@ namespace nettest.Controllers
     [Route("[controller]")]
     public class PingController : Controller
     {
-        class EnvVars { public string COMMIT_INFO = ""; public string COMMIT_HASH = ""; }
+        class EnvVars
+        {
+            public string COMMIT_INFO { get; set; } = "";
+            public string COMMIT_HASH { get; set; } = "";
+        }
 
         public PingController(IHostingEnvironment env, IConfiguration config)
         {
@@ -39,12 +43,11 @@ namespace nettest.Controllers
         public IActionResult Info()
         {
             EnvVars envVars = Config.Get<EnvVars>();
-            var myIP = HttpContext.Features.Get<IHttpConnectionFeature>().LocalIpAddress.ToString();
             return Ok(new
             {
                 Environment = Env.EnvironmentName,
-                HostIP = myIP,
-                Host_name = Environment.MachineName,
+                HostIP = HttpContext.Connection.LocalIpAddress.ToString(),
+                HostName = Environment.MachineName,
                 CommitHash = envVars.COMMIT_HASH,
                 CommitInfo = envVars.COMMIT_INFO
             });

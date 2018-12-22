@@ -38,7 +38,6 @@ namespace nettest
 				logBuilder.AddConsole();
 			});
 			services.AddMvc();
-			services.AddSingleton(services);
 		}
 	}
 }
