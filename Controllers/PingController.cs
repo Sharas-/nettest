@@ -19,6 +19,7 @@ namespace nettest.Controllers
         {
             public string COMMIT_INFO { get; set; } = "";
             public string COMMIT_HASH { get; set; } = "";
+            public object COMMIT_NR { get; set; } = "";
         }
 
         public PingController(IHostingEnvironment env, IConfiguration config)
@@ -49,7 +50,8 @@ namespace nettest.Controllers
                 HostIP = HttpContext.Connection.LocalIpAddress.ToString(),
                 HostName = Environment.MachineName,
                 CommitHash = envVars.COMMIT_HASH,
-                CommitInfo = envVars.COMMIT_INFO
+                CommitInfo = envVars.COMMIT_INFO,
+                CommitNr = envVars.COMMIT_NR
             });
         }
     }
