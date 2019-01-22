@@ -16,4 +16,8 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\nettest.repos\nettest.repos.csproj" />
+  </ItemGroup>
+
 </Project>

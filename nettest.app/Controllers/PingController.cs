@@ -1,18 +1,11 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Authentication.ExtendedProtection;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
-namespace nettest.Controllers
+namespace nettest.app.Controllers
 {
-    [Route("[controller]")]
+    [Route("/api/[controller]")]
     public class PingController : Controller
     {
         class EnvVars
@@ -49,9 +42,9 @@ namespace nettest.Controllers
                 Environment = Env.EnvironmentName,
                 HostIP = HttpContext.Connection.LocalIpAddress.ToString(),
                 HostName = Environment.MachineName,
-                CommitHash = envVars.COMMIT_HASH,
-                CommitInfo = envVars.COMMIT_INFO,
-                CommitNr = envVars.COMMIT_NR
+//                CommitHash = envVars.COMMIT_HASH,
+//                CommitInfo = envVars.COMMIT_INFO,
+//                CommitNr = envVars.COMMIT_NR
             });
         }
     }

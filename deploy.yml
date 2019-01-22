@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: nettest
-        image: sharas/nettest:0.1
+        image: sharas/nettest:bf23881
         ports:
         - name: web-server
           containerPort: 80
